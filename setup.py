@@ -25,6 +25,7 @@ setup(name='collective.borgerdk',
           'setuptools',
           # -*- Extra requirements: -*-
           'suds',
+          'BeautifulSoup',
       ],
       entry_points="""
       # -*- Entry points: -*-
