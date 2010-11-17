@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<object name="portal_workflow" meta_type="Plone Workflow Tool">
+  <object name="synchronizable_document_workflow" meta_type="Workflow"/>
+ <bindings>
+   <default>
+     <bound-workflow workflow_id="synchronizable_document_workflow"/>
+   </default>
+   <type type_id="Document"/>
+ </bindings>
+</object>

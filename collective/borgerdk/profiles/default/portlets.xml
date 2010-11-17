@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<portlets>
+
+  <portlet
+     addview="portlets.Borger"
+     title="Borger.dk"
+     description="Document synchronization portlet."
+     />
+
+</portlets>

@@ -1,0 +1,18 @@
+<dl class="portlet portletBorger"
+    tal:condition="view/available"
+    i18n:domain="collective.borger.dk">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <span class="tile" i18n:translate="">
+          Borger.dk
+        </span>
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <dd class="portletItem">
+      <tal:form define="view nocall: view/form">
+        <metal:block use-macro="context/@@ploneform-macros/titlelessform" />
+      </tal:form>
+    </dd>
+</dl>

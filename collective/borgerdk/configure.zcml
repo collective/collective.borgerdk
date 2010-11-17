@@ -1,0 +1,77 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="collective.borgerdk">
+
+  <include package="plone.app.registry" />
+
+  <genericsetup:registerProfile
+      name="default"
+      title="Integration with the borger.dk portal"
+      directory="profiles/default"
+      description="Installs components."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <!-- Portlet -->
+
+  <plone:portlet
+      name="portlets.Borger"
+      interface=".portlet.IBorger"
+      assignment=".portlet.Assignment"
+      renderer=".portlet.Renderer"
+      addview=".portlet.AddForm"
+      editview=".portlet.EditForm"
+      />
+
+  <adapter factory=".portlet.DefaultMunicipality" name="default" />
+
+  <!-- Form -->
+
+  <browser:page
+      name="add-synchronized-document"
+      for="Products.CMFCore.interfaces.IFolderish"
+      class=".form.SynchronizeView"
+      permission="cmf.ModifyPortalContent"
+      />
+
+  <!-- Document view -->
+
+  <browser:viewlet
+      name="ubify.item_metadata_box"
+      for="Products.ATContentTypes.interfaces.IATDocument"
+      view="plone.app.layout.globals.interfaces.IViewView"
+      manager="plone.app.layout.viewlets.interfaces.IBelowContentBody"
+      class=".viewlet.LinkToSourceViewlet"
+      permission="zope2.View"
+      />
+
+  <!-- Control panel -->
+
+  <browser:page
+      name="borger.dk-settings"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class=".control.BorgerPortalControlPanel"
+      permission="cmf.ManagePortal"
+      />
+
+  <!-- Synchronization -->
+
+  <browser:page
+      name="synchronize"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class=".update.UpdateView"
+      permission="zope2.View"
+      />
+
+  <!-- Vocabularies -->
+
+  <utility
+      name="vocabulary.Municipalities"
+      provides="zope.schema.interfaces.IVocabularyFactory"
+      component=".municipalities.Vocabulary"
+      />
+
+</configure>

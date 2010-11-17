@@ -1,0 +1,4 @@
+<p i18n:domain="collective.borgerdk" i18n:translate="" tal:condition="view/is_synchronized">
+  View this document on the borger.dk portal:
+  <a i18n:name="url" tal:attributes="href view/get_url" tal:content="context/title" />.
+</p>

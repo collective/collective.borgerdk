@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<import-steps>
+  <import-step id="collective.borgerdk.workflow" version="1"
+               handler="collective.borgerdk.setuphandlers.setupWorkflow"
+               title="Setup synchronizable document workflow">
+    <dependency step="workflows" />
+  </import-step>
+  <import-step id="collective.borgerdk.synchronization_token" version="1"
+               handler="collective.borgerdk.setuphandlers.setupSynchronizationToken"
+               title="Configure synchronization token">
+    <dependency step="registry" />
+  </import-step>
+</import-steps>
