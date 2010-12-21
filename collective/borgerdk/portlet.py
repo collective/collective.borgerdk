@@ -6,6 +6,8 @@ from zope.interface import implements
 from zope.interface import alsoProvides
 from zope import schema
 from zope.formlib import form
+from zope.security import checkPermission
+
 from z3c.form import widget
 from z3c.form.interfaces import HIDDEN_MODE
 
@@ -13,6 +15,7 @@ from plone.app.portlets.portlets import base
 from plone.portlets.interfaces import IPortletDataProvider
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from Products.CMFCore.utils import getToolByName
 from AccessControl import getSecurityManager
 from collective.borgerdk import MessageFactory as _
 
@@ -60,6 +63,19 @@ class Renderer(base.Renderer):
 
     def render(self):
         return self._template()
+
+    @property
+    def available(self):
+        view = getMultiAdapter((self.context, self.request), name=u'plone')
+        container = view.getCurrentFolder()
+
+        if not checkPermission('cmf.AddPortalContent', container):
+            return
+
+        pt = getToolByName(self.portal, 'portal_types')
+        my_type = pt.getTypeInfo(container)
+
+        return my_type.allowType('Document')
 
     @property
     def portal(self):
