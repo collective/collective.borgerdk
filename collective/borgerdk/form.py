@@ -18,6 +18,8 @@ from z3c.form import form
 from plone.i18n.normalizer.interfaces import IURLNormalizer
 from plone.memoize.volatile import cache
 from plone.app.z3cform.layout import wrap_form
+from plone.z3cform import z2
+
 from Products.statusmessages.interfaces import IStatusMessage
 from Products.CMFCore.utils import getToolByName
 
@@ -86,6 +88,10 @@ class SynchronizeForm(form.Form):
         u"Use this form to show documents from the portal " \
         u"on your site. Content is automatically synchronized."
         )
+
+    def update(self):
+        z2.switch_on(self)
+        return super(SynchronizeForm, self).update()
 
     @button.buttonAndHandler(u'Add')
     def handleAdd(self, action):
