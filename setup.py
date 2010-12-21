@@ -24,6 +24,7 @@ setup(name='collective.borgerdk',
       install_requires=[
           'setuptools',
           # -*- Extra requirements: -*-
+          'plone.app.z3cform',
           'suds',
           'BeautifulSoup',
       ],

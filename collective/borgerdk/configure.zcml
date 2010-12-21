@@ -6,6 +6,7 @@
     i18n_domain="collective.borgerdk">
 
   <include package="plone.app.registry" />
+  <include package="plone.app.z3cform" />
 
   <genericsetup:registerProfile
       name="default"
