@@ -1,0 +1,98 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2010-12-22 09:44+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: Malthe Borch <mborch@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: da\n"
+"Language-Name: Danish\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: collective.borgerdk\n"
+
+#: ./collective/borgerdk/form.py:86
+msgid "Add a synchronized article"
+msgstr "Tilføj en synkroniseret artikel"
+
+#: ./collective/borgerdk/form.py:75
+msgid "Article URL"
+msgstr "Artiklens URL"
+
+#: ./collective/borgerdk/form.py:42
+msgid "Article added."
+msgstr "Artikel tilføjet."
+
+#: ./collective/borgerdk/form.py:41
+msgid "Article already exists."
+msgstr "Artikel eksisterer allerede."
+
+#: ./collective/borgerdk/profiles/default/controlpanel.xml
+msgid "Borger.dk"
+msgstr ""
+
+#: ./collective/borgerdk/control.py:24
+msgid "Borger.dk portal settings"
+msgstr "Indstillinger for Borger.dk-portalen"
+
+#: ./collective/borgerdk/form.py:66
+msgid "Municipality"
+msgstr "Kommune"
+
+#: ./collective/borgerdk/form.py:52
+msgid "Must be a URL from borger.dk."
+msgstr "Skal være en URL fra websiden: borger.dk."
+
+#: ./collective/borgerdk/form.py:31
+msgid "No article information found at location. Make sure the link is for an article and not a news item or similar."
+msgstr "Fandt ikke en artikel på denne adresse. Det kan være fordi den pågældende URL peger på et ikke-permanent indholdselement som f.eks. en nyhedsartikel eller en oversigtsside."
+
+#: ./collective/borgerdk/form.py:76
+msgid "Paste the article link into this field."
+msgstr "Indsæt linket til artiklen i dette felt."
+
+#: ./collective/borgerdk/form.py:67
+msgid "Select a municipality to receive localized content."
+msgstr "Vælg en kommune for at modtage lokaliseret indhold."
+
+#: ./collective/borgerdk/interfaces.py:14
+msgid "Synchronization token"
+msgstr "Synkroniseringsløsen"
+
+#: ./collective/borgerdk/form.py:40
+msgid "System error."
+msgstr "Systemfejl."
+
+#: ./collective/borgerdk/interfaces.py:8
+msgid "URL to the SOAP web service"
+msgstr "URL til SOAP web servicen."
+
+#: ./collective/borgerdk/form.py:39
+msgid "Unable to add article."
+msgstr "Kunne ikke tilføje artiklen."
+
+#: ./collective/borgerdk/form.py:37
+msgid "Unable to download page."
+msgstr "Kunne ikke hente siden."
+
+#: ./collective/borgerdk/form.py:36
+msgid "Unable to find permanent link at location."
+msgstr "Kunne ikke finde et permanent link på denne adresse."
+
+#: ./collective/borgerdk/form.py:38
+msgid "Unable to parse document."
+msgstr "Fejl ved læsning af artiklen."
+
+#: ./collective/borgerdk/form.py:87
+msgid "Use this form to show documents from the portal on your site. Content is automatically synchronized."
+msgstr "Brug denne formular til at vise en artikel fra Borger.dk-portalen i denne mappe."
+
+#: ./collective/borgerdk/interfaces.py:15
+msgid "Use this token to update all synchronized documents."
+msgstr "Brug dette løsen til at opdatere alle synkroniserede artikler."
+
+#: ./collective/borgerdk/link.pt:3
+msgid "View this document on the borger.dk portal: ${url}."
+msgstr "Vis denne artikel fra Borger.dk-portalen: ${url}."
+

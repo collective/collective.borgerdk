@@ -1,0 +1,103 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2010-12-22 09:44+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: collective.borgerdk\n"
+
+#: ./collective/borgerdk/form.py:86
+msgid "Add a synchronized article"
+msgstr ""
+
+#: ./collective/borgerdk/form.py:75
+msgid "Article URL"
+msgstr ""
+
+#: ./collective/borgerdk/form.py:42
+msgid "Article added."
+msgstr ""
+
+#: ./collective/borgerdk/form.py:41
+msgid "Article already exists."
+msgstr ""
+
+#: ./collective/borgerdk/profiles/default/controlpanel.xml
+msgid "Borger.dk"
+msgstr ""
+
+#: ./collective/borgerdk/control.py:24
+msgid "Borger.dk portal settings"
+msgstr ""
+
+#: ./collective/borgerdk/form.py:66
+msgid "Municipality"
+msgstr ""
+
+#: ./collective/borgerdk/form.py:52
+msgid "Must be a URL from borger.dk."
+msgstr ""
+
+#: ./collective/borgerdk/form.py:31
+msgid "No article information found at location. Make sure the link is for an article and not a news item or similar."
+msgstr ""
+
+#: ./collective/borgerdk/form.py:76
+msgid "Paste the article link into this field."
+msgstr ""
+
+#: ./collective/borgerdk/form.py:67
+msgid "Select a municipality to receive localized content."
+msgstr ""
+
+#: ./collective/borgerdk/interfaces.py:14
+msgid "Synchronization token"
+msgstr ""
+
+#: ./collective/borgerdk/form.py:40
+msgid "System error."
+msgstr ""
+
+#: ./collective/borgerdk/interfaces.py:8
+msgid "URL to the SOAP web service"
+msgstr ""
+
+#: ./collective/borgerdk/form.py:39
+msgid "Unable to add article."
+msgstr ""
+
+#: ./collective/borgerdk/form.py:37
+msgid "Unable to download page."
+msgstr ""
+
+#: ./collective/borgerdk/form.py:36
+msgid "Unable to find permanent link at location."
+msgstr ""
+
+#: ./collective/borgerdk/form.py:38
+msgid "Unable to parse document."
+msgstr ""
+
+#: ./collective/borgerdk/form.py:87
+msgid "Use this form to show documents from the portal on your site. Content is automatically synchronized."
+msgstr ""
+
+#: ./collective/borgerdk/interfaces.py:15
+msgid "Use this token to update all synchronized documents."
+msgstr ""
+
+#: ./collective/borgerdk/link.pt:3
+msgid "View this document on the borger.dk portal: ${url}."
+msgstr ""
+
