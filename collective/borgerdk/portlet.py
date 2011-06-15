@@ -20,16 +20,20 @@ from AccessControl import getSecurityManager
 from collective.borgerdk import MessageFactory as _
 
 from .form import SynchronizeForm
+from .form import IDocumentTableContents
 from .form import ILocalization
 
-class IBorger(IPortletDataProvider, ILocalization):
+class IBorger(IPortletDataProvider, ILocalization, IDocumentTableContents):
     pass
 
 class Assignment(base.Assignment):
     implements(IBorger)
 
-    def __init__(self, municipality=None):
+    enable_toc = False
+
+    def __init__(self, municipality=None, enable_toc=None):
         self.municipality = municipality
+        self.enable_toc = enable_toc
 
     @property
     def title(self):
@@ -52,6 +56,8 @@ class Renderer(base.Renderer):
 
         # set municipality on form
         self.form.municipality = self.data.municipality
+        self.form.enable_toc = self.data.enable_toc
+
         alsoProvides(self.form, ILocalization)
 
         # update form
@@ -60,6 +66,15 @@ class Renderer(base.Renderer):
         # hide municipality widget if set
         if self.data.municipality is not None:
             self.form.widgets['municipality'].mode = HIDDEN_MODE
+
+        if self.data.enable_toc is not None:
+            self.form.widgets['enable_toc'].mode = HIDDEN_MODE
+
+            # XXX: There seems to be a bug in z3c.form which causes
+            # hidden checkboxes to have 'selected' even though the
+            # value is ``False``. This works around the issue.
+            selected = 'selected' if self.data.enable_toc else ''
+            self.form.widgets['enable_toc'].items[0]['value'] = selected
 
     def render(self):
         return self._template()

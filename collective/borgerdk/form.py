@@ -70,13 +70,26 @@ class ILocalization(interface.Interface):
         )
 
 
-class ISynchronizeForm(ILocalization):
+class IDocumentTableContents(interface.Interface):
+    enable_toc = schema.Bool(
+        title=_(u"Enable table of contents"),
+        description=_(u"If this option is selected, "
+                      u"documents will be created "
+                      u"with the table of contents "
+                      u"setting enabled."),
+        required=False,
+        default=False,
+        )
+
+
+class ISynchronizeForm(ILocalization, IDocumentTableContents):
     url = schema.TextLine(
         title=_(u"Article URL"),
         description=_(u"Paste the article link into this field."),
         required=True,
         constraint=check_url,
         )
+
 
 class SynchronizeForm(form.Form):
     """Adds a new synchronized document to the site."""
@@ -103,6 +116,7 @@ class SynchronizeForm(form.Form):
         response = None
         url = data['url']
         municipality = data.get('municipality', None)
+        enable_toc = data.get('enable_toc', False)
 
         if 'permalink' in url:
             try:
@@ -145,7 +159,7 @@ class SynchronizeForm(form.Form):
                 self.status = SYSTEM_ERROR
             else:
                 try:
-                    name = self._add_article(article, municipality)
+                    name = self._add_article(article, municipality, enable_toc)
                 except BadRequest:
                     self.status = CANT_ADD
                     return
@@ -172,7 +186,7 @@ class SynchronizeForm(form.Form):
         logging.debug("Requesting article with ID: %s..." % _id)
         return self._client.service.GetArticleByID(_id, municipality)
 
-    def _add_article(self, article, municipality):
+    def _add_article(self, article, municipality, enable_toc):
         title = article.ArticleTitle
         name = queryUtility(IURLNormalizer).normalize(title)
         container = self.context.restrictedTraverse('@@plone').getCurrentFolder()
@@ -192,6 +206,9 @@ class SynchronizeForm(form.Form):
         metadata.id = article.ArticleID
         metadata.url = article.ArticleUrl
         metadata.municipality = municipality
+
+        # Enable TOC if setting is enabled
+        document.setTableContents(enable_toc)
 
         # set review state directly (no transition is available for this)
         wftool = getToolByName(self.context, 'portal_workflow')

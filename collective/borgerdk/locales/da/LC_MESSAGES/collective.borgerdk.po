@@ -96,3 +96,8 @@ msgstr "Brug dette løsen til at opdatere alle synkroniserede artikler."
 msgid "View this document on the borger.dk portal: ${url}."
 msgstr "Vis denne artikel fra Borger.dk-portalen: ${url}."
 
+msgid "Enable table of contents"
+msgstr "Aktivér indholdsfortegnelse"
+
+msgid "If this option is selected, documents will be created with the table of contents setting enabled."
+msgstr "Hvis dette er valgt vil artikler blive tilføjet med indstillingen 'indholdsfortegnelse' aktiveret."
