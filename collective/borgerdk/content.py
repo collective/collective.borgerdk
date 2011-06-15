@@ -1,6 +1,6 @@
 from DateTime import DateTime
 from zope.annotation.interfaces import IAnnotations
-
+from BeautifulSoup import BeautifulSoup
 
 def get_article_metadata(document):
     return IAnnotations(document).setdefault('borger.dk', Metadata())
@@ -12,9 +12,15 @@ def is_synchronized(wftool, document):
 
 
 def update_content(document, article):
+    soup = BeautifulSoup(article.Content)
+    content = soup.find(id='kernetekst')
+    if content is None:
+        content = article.Content
+
     document.setTitle(article.ArticleTitle.encode('utf-8'))
     document.setDescription(article.ArticleHeader.encode('utf-8'))
-    document.setText(article.Content.encode('utf-8'))
+
+    document.setText(content.encode('utf-8'))
     document.setEffectiveDate(DateTime(article.PublishingDate))
     document.setModificationDate(DateTime(article.LastUpdated))
 
