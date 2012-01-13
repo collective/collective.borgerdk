@@ -1,13 +1,18 @@
+import suds
+import logging
+
 from zope.component import getUtility
 from zExceptions import Unauthorized
 
 from Products.Five.browser import BrowserView
+from Products.statusmessages.interfaces import IStatusMessage
+
 from collective.borgerdk.content import get_article_metadata
-from collective.borgerdk.content import is_synchronized
 from collective.borgerdk.content import update_content
 from collective.borgerdk.portal import get_client
 from collective.borgerdk import security
 from collective.borgerdk.interfaces import IBorgerPortalSettings
+from collective.borgerdk import MessageFactory as _
 from plone.registry.interfaces import IRegistry
 
 
@@ -32,10 +37,20 @@ class UpdateView(BrowserView):
             metadata = get_article_metadata(document)
 
             # retrieve article
-            article = client.service.GetArticleByID(
-                metadata.id,
-                metadata.municipality
-                )
+            try:
+                article = client.service.GetArticleByID(
+                    metadata.id,
+                    metadata.municipality
+                    )
+            except suds.WebFault, exc:
+                logging.warn(exc)
+                IStatusMessage(self.request).addStatusMessage(
+                    _(u"Fejl ved opdatering af artikel: ${title}.",
+                      mapping={'title': document.Title()}),
+                    type="warning"
+                    )
+
+                continue
 
             # as unrestricted user ...
             old = security.loginAsUnrestrictedUser()
