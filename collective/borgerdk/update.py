@@ -44,9 +44,10 @@ class UpdateView(BrowserView):
                     )
             except suds.WebFault, exc:
                 logging.warn(exc)
+                title = document.Title().decode('utf-8')
                 IStatusMessage(self.request).addStatusMessage(
                     _(u"Fejl ved opdatering af artikel: ${title}.",
-                      mapping={'title': document.Title()}),
+                      mapping={'title': title}),
                     type="warning"
                     )
 
